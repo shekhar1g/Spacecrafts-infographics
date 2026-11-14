@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five Spacecraft Leaving the Solar System</title>
+<meta name="description" content="When Voyager 1, Voyager 2, Pioneer 10, Pioneer 11 and New Horizons launched, how far they have gone, where they are headed and why they were sent.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Five Spacecraft Leaving the Solar System">
+<meta property="og:description" content="An animated look at the five human-made spacecraft on their way out of the solar system, with launch dates, distances, directions and missions.">
+<meta property="og:image" content="https://YOURUSERNAME.github.io/voyager-infographic/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://YOURUSERNAME.github.io/voyager-infographic/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Five Spacecraft Leaving the Solar System">
+<meta name="twitter:image" content="https://YOURUSERNAME.github.io/voyager-infographic/preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#0a0e1f; --bg2:#10162d; --panel:#141b36; --line:#2a3358;
+  --ink:#eef1fa; --ink2:#b5bdd6; --ink3:#8d97b8;
+  --v1:#6ea8ff; --v2:#ffb454; --p10:#6fe0aa; --p11:#f08cc4; --nh:#b9a2ff;
+  --gold:#ffd98a;
+  --lab:118px; --head:"Space Grotesk","Inter",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+h1,h2,h3{font-family:var(--head);margin:0;line-height:1.12}
+a{color:var(--v1)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:72px 0 56px;background:radial-gradient(1200px 500px at 70% -10%,#1b2750 0%,var(--bg) 60%)}
+#stars{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative}
+.eyebrow{font-family:var(--head);letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--gold);margin:0 0 14px}
+.hero h1{font-size:clamp(34px,6.4vw,66px);max-width:14ch;font-weight:700}
+.hero p.lead{max-width:56ch;color:var(--ink2);font-size:18px;margin:18px 0 0}
+.count{margin-top:34px;display:inline-block;background:rgba(20,27,54,.82);border:1px solid var(--line);border-radius:18px;padding:18px 22px;backdrop-filter:blur(4px)}
+.count .lab{font-size:14px;color:var(--ink2);margin:0 0 8px}
+.count .when{font-size:13px;color:var(--ink3);margin:10px 0 0}
+.clock{display:flex;gap:12px;font-family:var(--head)}
+.clock div{min-width:64px;text-align:center}
+.clock b{display:block;font-size:clamp(28px,5vw,44px);font-weight:700;color:var(--v1);font-variant-numeric:tabular-nums}
+.clock span{font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.1em}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(20,27,54,.7);color:var(--ink);text-decoration:none;font-size:14px;min-height:44px}
+.chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.chip:hover,.chip:focus-visible{border-color:var(--ink2);outline:none}
+
+/* sections */
+section{padding:64px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(26px,4vw,38px);margin-bottom:8px}
+section .sub{color:var(--ink2);max-width:62ch;margin:0 0 30px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* gantt */
+.axis{position:relative;height:26px;margin:0 0 6px var(--lab);border-bottom:1px solid var(--line)}
+.axis span{position:absolute;bottom:4px;transform:translateX(-50%);font-size:12px;color:var(--ink3)}
+.g-row{display:grid;grid-template-columns:var(--lab) 1fr;align-items:center;margin:12px 0}
+.g-name{font-family:var(--head);font-weight:500;font-size:15px}
+.g-track{position:relative;height:30px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(16.666% - 1px),#1c2447 calc(16.666% - 1px),#1c2447 16.666%);border-radius:6px}
+.g-bar{position:absolute;top:5px;height:20px;border-radius:5px;transform-origin:left;transform:scaleX(0);transition:transform 1.5s cubic-bezier(.2,.7,.2,1)}
+.g-bar.dash{background:transparent!important;border:2px dashed;opacity:.8}
+.in .g-bar,.g-row.in .g-bar{transform:scaleX(1)}
+.g-note{position:absolute;top:5px;font-size:12px;color:var(--ink);white-space:nowrap;line-height:20px;text-shadow:0 0 4px #0a0e1f}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:13px;color:var(--ink2)}
+.legend i{display:inline-block;width:26px;height:10px;border-radius:3px;vertical-align:middle;margin-right:8px;background:var(--ink2)}
+.legend i.d{background:transparent;border:2px dashed var(--ink2);height:12px}
+
+/* distance bars */
+.d-row{display:grid;grid-template-columns:var(--lab) 1fr;gap:0;align-items:center;margin:14px 0}
+.d-track{position:relative;height:34px;border-radius:8px;background:#0e1430}
+.d-fill{position:absolute;left:0;top:0;bottom:0;border-radius:8px;width:0;transition:width 1.8s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-family:var(--head);font-weight:700;font-size:14px;color:#0a0e1f;min-width:0;overflow:hidden;white-space:nowrap}
+.mark{z-index:2;pointer-events:none;position:absolute;top:-6px;bottom:-6px;width:0;border-left:2px dashed var(--ink3)}
+.mark em{position:absolute;top:-24px;left:6px;font-style:normal;font-size:12px;color:var(--ink2);white-space:nowrap}
+.d-meta{grid-column:2;justify-self:start;position:relative;z-index:3;background:var(--panel);padding-right:8px;font-size:13px;color:var(--ink2);margin-top:5px}
+.d-wrap{position:relative;margin-top:30px}
+
+/* directions */
+.dir-grid{display:grid;grid-template-columns:minmax(300px,500px) 1fr;gap:26px;align-items:center}
+.dir-grid svg{width:100%;height:auto;display:block}
+.dir-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.dir-list li{display:grid;grid-template-columns:14px 1fr;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}
+.dir-list i{width:12px;height:12px;border-radius:50%;margin-top:6px}
+.dir-list b{font-family:var(--head)}
+.dir-list span{display:block;color:var(--ink2);font-size:14px}
+.note{font-size:13px;color:var(--ink3);margin-top:14px}
+
+/* speed */
+.s-row{display:grid;grid-template-columns:var(--lab) 1fr 112px;gap:12px;align-items:center;margin:12px 0}
+.s-track{position:relative;height:22px;border-radius:6px;background:#0e1430}
+.s-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.s-launch{position:absolute;top:-5px;bottom:-5px;border-left:2px solid var(--gold)}
+.s-launch em{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-style:normal;font-size:12px;color:var(--gold);white-space:nowrap}
+.s-val{font-family:var(--head);font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.callout{margin-top:26px;border-left:3px solid var(--gold);padding:4px 0 4px 16px;color:var(--ink2);max-width:70ch}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s ease,opacity .7s ease,border-color .25s ease}
+.card:hover{transform:translateY(-4px);border-color:var(--ink3)}
+.card .top{height:6px}
+.card .in-card{padding:20px 20px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card h3{font-size:24px}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle;font-family:var(--body)}
+.badge.on{background:#12351f;color:#7ee2a2;border:1px solid #1f6a3a}
+.badge.off{background:#2b2230;color:#d6b3dc;border:1px solid #5b4666}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stats div{background:var(--bg2);border-radius:10px;padding:9px 11px}
+.stats small{display:block;color:var(--ink3);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.stats b{font-family:var(--head);font-size:16px}
+.card .purpose{color:var(--ink)}
+.card ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14px}
+.card li{margin:3px 0}
+.carry{font-size:13px;color:var(--gold)}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fact{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+.fact b{display:block;font-family:var(--head);font-size:34px;color:var(--gold);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.fact p{margin:0;color:var(--ink2);font-size:14px}
+
+footer{padding:40px 0 70px;border-top:1px solid var(--line);color:var(--ink3);font-size:13px}
+footer ul{margin:8px 0 0;padding-left:18px}
+footer a{color:var(--ink2)}
+
+@media (max-width:760px){
+  .dir-grid{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  :root{--lab:96px}
+  .mn em{display:none}
+  .s-row{grid-template-columns:var(--lab) 1fr 96px}
+  .s-val{font-size:13px}
+  .clock div{min-width:54px}
+  .hero{padding-top:52px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+  .g-bar{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="eyebrow">Interstellar travelers</p>
+    <h1>Five spacecraft leaving the solar system</h1>
+    <p class="lead">Only five human-made objects have ever reached the speed to escape the Sun's gravity for good. Here is when each one launched, how far it has gone, where it is headed, and why it was sent.</p>
+
+    <div class="count" role="timer" aria-live="off">
+      <p class="lab">Voyager 1 reaches one light-day from Earth in</p>
+      <div class="clock" id="clock">
+        <div><b id="cd">--</b><span>days</span></div>
+        <div><b id="ch">--</b><span>hours</span></div>
+        <div><b id="cm">--</b><span>min</span></div>
+        <div><b id="cs">--</b><span>sec</span></div>
+      </div>
+      <p class="when" id="when"></p>
+    </div>
+
+    <nav class="chips" aria-label="Jump to a spacecraft">
+      <a class="chip" href="#v1"><i style="background:var(--v1)"></i>Voyager 1</a>
+      <a class="chip" href="#v2"><i style="background:var(--v2)"></i>Voyager 2</a>
+      <a class="chip" href="#p10"><i style="background:var(--p10)"></i>Pioneer 10</a>
+      <a class="chip" href="#p11"><i style="background:var(--p11)"></i>Pioneer 11</a>
+      <a class="chip" href="#nh"><i style="background:var(--nh)"></i>New Horizons</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="launch">
+  <div class="wrap">
+    <h2>When they launched</h2>
+    <p class="sub">Each bar runs from launch day to today. A dashed bar means the spacecraft has gone silent but is still coasting outward.</p>
+    <div class="panel reveal">
+      <div class="axis" id="axis"></div>
+      <div id="gantt"></div>
+      <div class="legend"><span><i></i>In contact</span><span><i class="d"></i>Silent, still travelling</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="distance">
+  <div class="wrap">
+    <h2>How far they are</h2>
+    <p class="sub">Distance from the Sun in astronomical units (AU). One AU is the distance from Earth to the Sun, about 93 million miles. Distances are approximate and grow every day.</p>
+    <div class="panel reveal">
+      <div class="d-wrap" id="dist"></div>
+    </div>
+  </div>
+</section>
+
+<section id="direction">
+  <div class="wrap">
+    <h2>Where they are headed</h2>
+    <p class="sub">The five paths point in very different directions, so none of these spacecraft will ever meet. This side view shows the flat plane the planets orbit in, with the three craft whose tilt angles are known.</p>
+    <div class="panel reveal">
+      <div class="dir-grid">
+        <svg viewBox="0 0 520 560" role="img" aria-labelledby="dtitle ddesc">
+          <title id="dtitle">Side view of three spacecraft paths</title>
+          <desc id="ddesc">Voyager 1 climbs 35 degrees north of the plane of the planets, Voyager 2 dives 48 degrees south, and New Horizons stays in the plane. A dashed arc marks the heliopause at about 121 AU.</desc>
+          <rect width="520" height="560" fill="transparent"/>
+          <line x1="80" y1="280" x2="500" y2="280" stroke="#3a4577" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <text x="500" y="268" text-anchor="end" fill="#8d97b8" font-size="15">Plane of the planets</text>
+          <path d="M 358 280 A 278 278 0 0 0 219 39" fill="none" stroke="#ffd98a" stroke-width="1.5" stroke-dasharray="6 6" opacity=".8"/>
+          <path d="M 358 280 A 278 278 0 0 1 219 521" fill="none" stroke="#ffd98a" stroke-width="1.5" stroke-dasharray="6 6" opacity=".8"/>
+          <text x="372" y="352" fill="#ffd98a" font-size="15">Heliopause</text><text x="372" y="370" fill="#ffd98a" font-size="15">about 121 AU</text>
+          <!-- Voyager 1: 35 deg north, 173 AU * 2.3 -->
+          <line x1="80" y1="280" x2="406" y2="52" stroke="#6ea8ff" stroke-width="3" stroke-linecap="round"/>
+          <path d="M 140 280 A 60 60 0 0 0 129.1 245.6" fill="none" stroke="#6ea8ff" stroke-width="1.5"/>
+          <text x="148" y="268" fill="#6ea8ff" font-size="15">35° north</text>
+          <text x="396" y="40" text-anchor="end" fill="#eef1fa" font-size="17" font-weight="600">Voyager 1 toward Ophiuchus</text>
+          <circle id="dot-v1" r="6" fill="#6ea8ff" cx="0" cy="0" data-end="406,52"><animateMotion dur="9s" repeatCount="indefinite" path="M80,280 L406,52"/></circle>
+          <!-- Voyager 2: 48 deg south, 143 AU * 2.3 -->
+          <line x1="80" y1="280" x2="300" y2="524" stroke="#ffb454" stroke-width="3" stroke-linecap="round"/>
+          <path d="M 140 280 A 60 60 0 0 1 120.15 324.6" fill="none" stroke="#ffb454" stroke-width="1.5"/>
+          <text x="140" y="330" fill="#ffb454" font-size="15">48° south</text>
+          <text x="500" y="548" text-anchor="end" fill="#eef1fa" font-size="17" font-weight="600">Voyager 2 toward Pavo and Telescopium</text>
+          <circle id="dot-v2" r="6" fill="#ffb454" cx="0" cy="0" data-end="300,524"><animateMotion dur="8s" repeatCount="indefinite" path="M80,280 L300,524"/></circle>
+          <!-- New Horizons: in plane, 65 AU * 2.3 -->
+          <line x1="80" y1="280" x2="230" y2="280" stroke="#b9a2ff" stroke-width="3" stroke-linecap="round"/>
+          <text x="236" y="262" fill="#eef1fa" font-size="17" font-weight="600">New Horizons</text>
+          <text x="236" y="304" fill="#b9a2ff" font-size="15">toward Sagittarius</text>
+          <circle id="dot-nh" r="6" fill="#b9a2ff" cx="0" cy="0" data-end="230,280"><animateMotion dur="5s" repeatCount="indefinite" path="M80,280 L230,280"/></circle>
+          <!-- Sun -->
+          <circle cx="80" cy="280" r="16" fill="#ffd98a"/>
+          <circle cx="80" cy="280" r="26" fill="#ffd98a" opacity=".18"/>
+          <text x="80" y="326" text-anchor="middle" fill="#ffd98a" font-size="15">Sun</text>
+        </svg>
+
+        <ul class="dir-list" id="dirlist"></ul>
+      </div>
+      <p class="note">Schematic, not to scale in angle or distance detail. Tilt angles for the Pioneers are not drawn here. Directions describe where each path points today. The spacecraft are not steering toward these stars, and getting near them would take tens of thousands to millions of years.</p>
+    </div>
+  </div>
+</section>
+
+<section id="speed">
+  <div class="wrap">
+    <h2>How fast they travel</h2>
+    <p class="sub">Cruising speed relative to the Sun, in miles per hour. The gold line marks New Horizons' launch speed.</p>
+    <div class="panel reveal" id="speedpanel"></div>
+    <p class="callout reveal">New Horizons left Earth faster than any of the five, at about 36,400 mph, but it got only one planetary gravity assist, from Jupiter. The Voyagers got several slingshots, which is why they cruise faster today, and New Horizons will never catch up.</p>
+  </div>
+</section>
+
+<section id="missions">
+  <div class="wrap">
+    <h2>Why they were sent</h2>
+    <p class="sub">Each spacecraft had its own job, and most outlived their plans by decades.</p>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section id="facts">
+  <div class="wrap">
+    <h2>A few more things worth knowing</h2>
+        <div class="facts">
+      <div class="fact reveal"><b data-count="48" data-suffix=" hrs">48 hrs</b><p>The round trip for a radio message to Voyager 1 once it passes one light-day, 24 hours out and 24 hours back.</p></div>
+      <div class="fact reveal"><b data-count="1" data-suffix=" million mi">1 million mi</b><p>About how far Voyager 1 travels every single day.</p></div>
+      <div class="fact reveal"><b data-count="4" data-suffix=" watts">4 watts</b><p>Roughly how much electrical power each Voyager loses every year as its plutonium power source fades.</p></div>
+      <div class="fact reveal"><b data-count="300" data-suffix=" years">300 years</b><p>NASA's estimate for Voyager 1 to reach the inner edge of the Oort Cloud. Crossing it takes about 30,000 years.</p></div>
+      <div class="fact reveal"><b data-count="40000" data-suffix=" years">40,000 years</b><p>When Voyager 1 passes about 1.7 light-years from the star Gliese 445.</p></div>
+      <div class="fact reveal"><b data-count="2" data-suffix=" plaques">2 plaques</b><p>The Pioneers each carry a gold-anodized plaque showing human figures and a star map of Earth's location.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Distances, speeds and statuses are approximate as of November 2026. Figures for Voyager 1 and 2 come from NASA and JPL. Pioneer 10, Pioneer 11 and New Horizons distances and the speeds are rounded values from research notes. Pioneer 10 is described as likely in interstellar space because it can no longer report measurements.</p>
+    <ul>
+      <li><a href="https://science.nasa.gov/solar-system/oort-cloud/">NASA, Oort Cloud</a></li>
+      <li><a href="https://earthsky.org/space/voyager-1-1-light-day-from-earth-november-17-18-2026/">EarthSky, Voyager 1 one light-day</a></li>
+      <li><a href="https://science.nasa.gov/blogs/voyager/2026/08/04/nasa-engineers-help-prolong-voyager-2s-science-mission/">NASA, Voyager 2 Big Bang</a></li>
+      <li><a href="https://science.nasa.gov/missions/pioneer/pioneer-10-sends-last-signal/">NASA, Pioneer 10 and 11</a></li>
+      <li><a href="https://www.swri.org/node/12904146">SwRI, New Horizons</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var NOW = new Date();
+  var nowYear = NOW.getUTCFullYear() + (Date.UTC(NOW.getUTCFullYear(),NOW.getUTCMonth(),NOW.getUTCDate()) - Date.UTC(NOW.getUTCFullYear(),0,1))/(365.25*86400000);
+
+  var crafts = [
+    {id:"v1",name:"Voyager 1",color:"#6ea8ff",launch:"1977-09-05",label:"Sep 5, 1977",y:1977.68,au:173,mi:16.1,mph:38000,active:true,
+      status:"In contact",
+      dir:"Ophiuchus",dirNote:"35° north of the plane of the planets",
+      purpose:"Fly past Jupiter and Saturn, then keep going. Built for a five-year mission, it is now the most distant human-made object.",
+      hi:["First human-made object in interstellar space, crossing the heliopause on Aug 25, 2012","Reaches one light-day from Earth on Nov 18, 2026","Two instruments still working after April 2026"],
+      carries:"Carries a Golden Record of sounds and images of Earth"},
+    {id:"v2",name:"Voyager 2",color:"#ffb454",launch:"1977-08-20",label:"Aug 20, 1977",y:1977.64,au:143,mi:13.3,mph:34000,active:true,
+      status:"In contact",
+      dir:"Pavo and Telescopium",dirNote:"48° south of the plane of the planets",
+      purpose:"The Grand Tour. It is the only spacecraft to visit all four giant outer planets, Jupiter, Saturn, Uranus and Neptune.",
+      hi:["Entered interstellar space in November 2018","Got a power-saving \"Big Bang\" swap in July 2026, keeping three instruments running for at least another year","Reaches one light-day from Earth around November 2035"],
+      carries:"Carries a Golden Record of sounds and images of Earth"},
+    {id:"p10",name:"Pioneer 10",color:"#6fe0aa",launch:"1972-03-02",label:"Mar 2, 1972",y:1972.17,au:141,mi:13.1,mph:26700,active:false,last:2003.06,lastLabel:"Last signal Jan 23, 2003",
+      status:"Silent since 2003",
+      dir:"Taurus",dirNote:"Toward the bright star Aldebaran, more than 2 million years away",
+      purpose:"Scout the way. It was the first spacecraft to cross the asteroid belt and the first to visit Jupiter.",
+      hi:["Designed for 21 months, it kept talking for over 30 years","Likely in interstellar space, judged by distance","Was the most distant object until Voyager 1 passed it in 1998"],
+      carries:"Carries a gold-anodized plaque with human figures and a star map"},
+    {id:"p11",name:"Pioneer 11",color:"#f08cc4",launch:"1973-04-06",label:"April 1973",y:1973.27,au:117,mi:10.9,mph:25000,active:false,last:1995.75,lastLabel:"Last signal in 1995",
+      status:"Silent since 1995",
+      dir:"Aquila",dirNote:"Northwest of Sagittarius, passing near a star in about 4 million years",
+      purpose:"A backup for Pioneer 10 that became the first spacecraft to visit Saturn.",
+      hi:["Launched in case Pioneer 10 could not survive the asteroid belt","Approaching the interstellar boundary","Contact ended when Earth moved out of its antenna's view"],
+      carries:"Carries a gold-anodized plaque with human figures and a star map"},
+    {id:"nh",name:"New Horizons",color:"#b9a2ff",launch:"2006-01-19",label:"Jan 19, 2006",y:2006.05,au:65,mi:6.0,mph:30500,active:true,
+      status:"In contact",
+      dir:"Sagittarius",dirNote:"Nearly flat along the plane of the planets",
+      purpose:"Give us our first close look at Pluto, then explore the Kuiper Belt and the outer edge of the Sun's influence.",
+      hi:["Pluto flyby in 2015 and Kuiper Belt object Arrokoth in 2019","Fastest launch of the five, about 36,400 mph","Expected to reach interstellar space in the early 2040s"],
+      carries:""}
+  ];
+
+  /* ---------- star field ---------- */
+  var cv = document.getElementById("stars"), ctx = cv.getContext("2d"), stars = [];
+  function sizeStars(){
+    var r = cv.getBoundingClientRect(), d = window.devicePixelRatio || 1;
+    cv.width = r.width*d; cv.height = r.height*d; ctx.setTransform(d,0,0,d,0,0);
+    stars = []; var n = Math.round(r.width*r.height/5200);
+    for(var i=0;i<n;i++) stars.push({x:Math.random()*r.width,y:Math.random()*r.height,r:Math.random()*1.3+.3,p:Math.random()*6.28,s:Math.random()*1.4+.4});
+  }
+  function drawStars(t){
+    var r = cv.getBoundingClientRect(); ctx.clearRect(0,0,r.width,r.height);
+    for(var i=0;i<stars.length;i++){
+      var s = stars[i], a = reduce ? .7 : .35 + .55*Math.abs(Math.sin(s.p + t/1000*s.s));
+      ctx.globalAlpha = a; ctx.fillStyle = "#dfe6ff"; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  function loop(t){ drawStars(t); requestAnimationFrame(loop); }
+  sizeStars(); drawStars(0);
+  if(!reduce) requestAnimationFrame(loop);
+  window.addEventListener("resize", function(){ sizeStars(); drawStars(0); });
+
+  /* ---------- countdown ---------- */
+  var target = Date.UTC(2026,10,18,6,16,7);
+  var el = {d:document.getElementById("cd"),h:document.getElementById("ch"),m:document.getElementById("cm"),s:document.getElementById("cs")};
+  var whenEl = document.getElementById("when");
+  try{ whenEl.textContent = "Milestone time: " + new Date(target).toLocaleString(undefined,{dateStyle:"full",timeStyle:"short"}) + " (your local time)"; }catch(e){ whenEl.textContent = "Milestone time: Nov 18, 2026, 12:16 a.m. Central"; }
+  function pad(n){ return (n<10?"0":"")+n; }
+  function tick(){
+    var ms = target - Date.now();
+    if(ms <= 0){
+      document.querySelector(".count .lab").textContent = "Voyager 1 is now more than one light-day from Earth";
+      document.getElementById("clock").style.display = "none"; return;
+    }
+    var s = Math.floor(ms/1000);
+    el.d.textContent = Math.floor(s/86400); el.h.textContent = pad(Math.floor(s%86400/3600));
+    el.m.textContent = pad(Math.floor(s%3600/60)); el.s.textContent = pad(s%60);
+  }
+  tick(); setInterval(tick,1000);
+
+  /* ---------- launch gantt ---------- */
+  var A0 = 1970, A1 = 2030, span = A1 - A0;
+  function pct(y){ return (y - A0)/span*100; }
+  var axis = document.getElementById("axis");
+  for(var yr=1970; yr<=2030; yr+=10){ var sp = document.createElement("span"); sp.style.left = pct(yr)+"%"; sp.textContent = yr; axis.appendChild(sp); }
+  var g = document.getElementById("gantt"), html = "";
+  crafts.slice().sort(function(a,b){return a.y-b.y;}).forEach(function(c){
+    var yrs = Math.floor(nowYear - c.y);
+    var solidEnd = c.active ? nowYear : c.last;
+    var bars = '<div class="g-bar" style="left:'+pct(c.y)+'%;width:'+(pct(solidEnd)-pct(c.y))+'%;background:'+c.color+'"></div>';
+    if(!c.active) bars += '<div class="g-bar dash" style="left:'+pct(c.last)+'%;width:'+(pct(nowYear)-pct(c.last))+'%;border-color:'+c.color+'"></div>';
+    var noteLeft = pct(c.y) + ((pct(solidEnd)-pct(c.y)) > 22 ? 1.2 : 0);
+    var note = (pct(solidEnd)-pct(c.y)) > 22
+      ? '<span class="g-note" style="left:'+noteLeft+'%;color:#0a0e1f;text-shadow:none;font-weight:600">'+c.label+'</span>'
+      : '<span class="g-note" style="left:'+(pct(solidEnd)+1)+'%">'+c.label+'</span>';
+    var right = '<span class="g-note" style="right:0.8%;text-align:right;opacity:.0"></span>';
+    html += '<div class="g-row"><div class="g-name" style="color:'+c.color+'">'+c.name+'</div><div class="g-track">'+bars+note+'</div></div>'
+         + '<div class="g-row" style="margin-top:-6px"><div></div><div style="font-size:12px;color:var(--ink3)">'+yrs+' years since launch'+(c.active?'':' · '+c.lastLabel)+'</div></div>';
+  });
+  g.innerHTML = html;
+
+  /* ---------- distance bars ---------- */
+  var MAXAU = 185, dist = document.getElementById("dist"), dh = "";
+  dh += '<div class="mark mn" style="left:calc(var(--lab) + (100% - var(--lab)) * '+(30/MAXAU)+')"><em>Neptune, 30 AU</em></div>';
+  dh += '<div class="mark" style="left:calc(var(--lab) + (100% - var(--lab)) * '+(121/MAXAU)+');border-color:#ffd98a"><em style="color:#ffd98a;left:auto;right:6px">Heliopause, about 121 AU</em></div>';
+  crafts.slice().sort(function(a,b){return b.au-a.au;}).forEach(function(c){
+    var hrs = c.au*8.3167/60;
+    dh += '<div class="d-row"><div class="g-name" style="color:'+c.color+'">'+c.name+'</div>'
+        + '<div class="d-track"><div class="d-fill" data-w="'+(c.au/MAXAU*100)+'" style="background:'+c.color+'"><span class="num" data-au="'+c.au+'">0 AU</span></div></div>'
+        + '<div class="d-meta">About '+c.mi+' billion miles from the Sun · light needs about '+hrs.toFixed(1)+' hours to cross that gap</div></div>';
+  });
+  dist.innerHTML = dh;
+
+  /* ---------- direction list ---------- */
+  var dl = ""; crafts.forEach(function(c){
+    dl += '<li><i style="background:'+c.color+'"></i><div><b style="color:'+c.color+'">'+c.name+'</b> toward '+c.dir+'<span>'+c.dirNote+'</span></div></li>';
+  });
+  document.getElementById("dirlist").innerHTML = dl;
+
+  /* ---------- speed ---------- */
+  var MAXMPH = 40000, sp = document.getElementById("speedpanel"), sh = "";
+  crafts.slice().sort(function(a,b){return b.mph-a.mph;}).forEach(function(c){
+    var launch = c.id==="nh" ? '<div class="s-launch" style="left:'+(36400/MAXMPH*100)+'%"><em>Launch 36,400</em></div>' : "";
+    sh += '<div class="s-row"'+(c.id==="nh"?' style="margin-top:36px"':"")+'><div class="g-name" style="color:'+c.color+'">'+c.name+'</div>'
+        + '<div class="s-track"><div class="s-fill" data-w="'+(c.mph/MAXMPH*100)+'" style="background:'+c.color+'"></div>'+launch+'</div>'
+        + '<div class="s-val" data-mph="'+c.mph+'">0 mph</div></div>';
+  });
+  sp.innerHTML = sh;
+  
+
+  /* ---------- cards ---------- */
+  var ch = ""; crafts.forEach(function(c){
+    var st = c.active ? '<span class="badge on">'+c.status+'</span>' : '<span class="badge off">'+c.status+'</span>';
+    ch += '<article class="card reveal" id="'+c.id+'"><div class="top" style="background:'+c.color+'"></div><div class="in-card">'
+      + '<h3 style="color:'+c.color+'">'+c.name+st+'</h3>'
+      + '<div class="stats"><div><small>Launched</small><b>'+c.label+'</b></div><div><small>From the Sun</small><b>'+c.au+' AU</b></div>'
+      + '<div><small>Speed</small><b>~'+c.mph.toLocaleString("en-US")+' mph</b></div><div><small>Heading</small><b>'+c.dir+'</b></div></div>'
+      + '<p class="purpose"><b>Purpose.</b> '+c.purpose+'</p>'
+      + '<ul>'+c.hi.map(function(h){return '<li>'+h+'</li>';}).join("")+'</ul>'
+      + (c.carries ? '<p class="carry">'+c.carries+'</p>' : '')
+      + '</div></article>';
+  });
+  document.getElementById("cards").innerHTML = ch;
+
+  /* ---------- reveal and counters ---------- */
+  function countTo(node, end, fmt, dur){
+    if(reduce){ node.textContent = fmt(end); return; }
+    var t0 = null;
+    function step(t){ if(t0===null) t0 = t; var p = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-p,3); node.textContent = fmt(end*e); if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  function activate(node){
+    node.classList.add("in");
+    node.querySelectorAll(".g-row").forEach(function(r){ r.classList.add("in"); });
+    node.querySelectorAll(".d-fill").forEach(function(f){
+      f.style.width = f.getAttribute("data-w")+"%";
+      var n = f.querySelector(".num"); countTo(n, +n.getAttribute("data-au"), function(v){ return Math.round(v)+" AU"; }, 1800);
+    });
+    node.querySelectorAll(".s-fill").forEach(function(f){ f.style.width = f.getAttribute("data-w")+"%"; });
+    node.querySelectorAll(".s-val").forEach(function(n){ countTo(n, +n.getAttribute("data-mph"), function(v){ return Math.round(v).toLocaleString("en-US")+" mph"; }, 1600); });
+    node.querySelectorAll("[data-count]").forEach(function(n){
+      var suf = n.getAttribute("data-suffix") || ""; countTo(n, +n.getAttribute("data-count"), function(v){ return Math.round(v).toLocaleString("en-US")+suf; }, 1400);
+    });
+  }
+  var targets = document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window) || reduce){ targets.forEach(activate); }
+  else{
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ activate(e.target); io.unobserve(e.target); } }); },{threshold:.18});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  /* ---------- static trajectory dots when motion is reduced ---------- */
+  document.querySelectorAll("circle[data-end]").forEach(function(c){ if(reduce){ var p=c.getAttribute("data-end").split(","); c.setAttribute("transform","translate("+p[0]+","+p[1]+")"); var a=c.querySelector("animateMotion"); if(a) c.removeChild(a); } });
+})();
+</script>
+</body>
+</html>
